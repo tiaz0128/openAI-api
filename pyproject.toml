@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "openai-api"
+version = "0.1.0"
+description = ""
+authors = ["tiaz0128 <tiaz0128.dev@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110.2"
+uvicorn = {extras = ["standard"], version = "^0.29.0"}
+httpx = "^0.27.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+black = "^24.4.2"
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
