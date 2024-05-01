@@ -9,14 +9,17 @@ def test_openai_api(api_key):
         messages=[
             {
                 "role": "system",
-                "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair.",
+                "content": "질문에 대한 답변은 항상 한 문장으로 작성해주세요.",
             },
             {
                 "role": "user",
-                "content": "Compose a poem that explains the concept of recursion in programming.",
+                "content": "위키북스에 대해서 아는데 말해줘.",
             },
         ],
+        max_tokens=100,
     )
+
+    assert completion.choices[0].message.content
 
     with open(".temp/output.txt", "w") as f:
         f.write(completion.choices[0].message.content)
