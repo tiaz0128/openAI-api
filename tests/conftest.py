@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 
 from openai import OpenAI
 import tweepy
+from langchain_openai import ChatOpenAI
+from langchain_community.utilities.google_search import GoogleSearchAPIWrapper
 
 load_dotenv()
 
@@ -47,3 +49,18 @@ def fixture_messages():
             "content": "위키북스에 새로운 신간을 소개하는 글을 작성해주세요.",
         },
     ]
+
+
+@pytest.fixture(scope="session", name="google_search_client")
+def fixture_google_search_client():
+    google_cse_id = os.getenv("GOOGLE_CSE_ID")
+    google_api_key = os.getenv("GOOGLE_API_KEY")
+    return GoogleSearchAPIWrapper(
+        google_cse_id=google_cse_id, google_api_key=google_api_key
+    )
+
+
+@pytest.fixture(scope="session", name="langchain_openai_client")
+def fixture_langchain_openai_client():
+    api_key = os.getenv("OPEN_API_KEY")
+    return ChatOpenAI(api_key=api_key, model="gpt-3.5-turbo", max_tokens=2000)

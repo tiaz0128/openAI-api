@@ -18,6 +18,11 @@ tiktoken = "^0.6.0"
 plotly = "^5.22.0"
 scipy = "^1.13.0"
 scikit-learn = "^1.4.2"
+google-api-python-client = "^2.128.0"
+langchain = "^0.1.19"
+langchain-core = "^0.1.52"
+langchain-community = "^0.0.38"
+langchain-openai = "^0.1.6"
 
 
 [tool.poetry.group.dev.dependencies]
